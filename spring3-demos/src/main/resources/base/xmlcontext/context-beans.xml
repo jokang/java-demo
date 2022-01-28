@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 在被import的XML文件中定义同名的Bean，会被覆盖掉 -->
+    <import resource="beans-to-import.xml"/>
+
+    <bean id="fakeString" class="java.lang.String">
+        <constructor-arg type="java.lang.String" value="Hello work!"/>
+    </bean>
+    <bean id="fakeBean" class="cn.jokang.demo.spring3.xmlcontext.SomeBean" init-method="init">
+        <!-- 当找不到ref的Bean的时候，会报错 -->
+        <property name="name" ref="fakeString"/>
+    </bean>
+</beans>
