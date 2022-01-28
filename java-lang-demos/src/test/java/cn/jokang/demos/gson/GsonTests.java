@@ -3,10 +3,9 @@ package cn.jokang.demos.gson;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -22,6 +21,7 @@ public class GsonTests {
     private final static Gson GSON = new Gson();
     public static final Type STRING_STRING_MAP_TYPE_TOKEN = new TypeToken<Map<String, String>>() {
     }.getType();
+
 
     @Test
     public void testSerializeNull() {
@@ -93,5 +93,14 @@ public class GsonTests {
         Map<String, String> result = gson.fromJson("{\"k\": 1}", STRING_STRING_MAP_TYPE_TOKEN);
         // 即使JSON里面的value不是string, 也能反序列化
         Assert.assertEquals(ImmutableMap.of("k", "1"), result);
+    }
+
+    @Test
+    public void testGetAsLong() {
+        String extraJson = "{\"page_stay_time\":11750,\"action_dt\":20210802}";
+        if (StringUtils.isNotEmpty(extraJson)) {
+            JsonElement extraJsonRoot = JsonParser.parseString(extraJson);
+            System.out.println(extraJsonRoot.getAsJsonObject().get("page_stay_time").getAsLong());
+        }
     }
 }
