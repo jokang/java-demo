@@ -50,4 +50,15 @@ public class NumberTest {
         byte negativeByte = (byte) -1;
         log.info("negative byte -1 is {}", negativeByte);
     }
+
+    @Test
+    public void testOctal() {
+        // 0开头的字段表示8进制数. 处理09:01:02这种时间的数据的时候需要注意下.
+        int octal = 031;
+
+        System.out.println(octal); // 25
+        System.out.println(Integer.parseInt("09")); // 9
+        System.out.println(Integer.parseInt("031")); // 其实还是31
+
+    }
 }
