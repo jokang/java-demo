@@ -10,6 +10,12 @@ import java.util.concurrent.ExecutionException;
  * @date 2021/5/13
  */
 public class CompletableFutureTest {
+    @Test
+    public void testForDebug() {
+        CompletableFuture<Integer> stringCompletableFuture = CompletableFuture.supplyAsync(() -> 1);
+        stringCompletableFuture.thenApply(x -> x + 1).thenAccept(System.out::println);
+    }
+
     // 测试直接设置值的, 后续步骤可以触发
     @Test
     public void testValue() {
