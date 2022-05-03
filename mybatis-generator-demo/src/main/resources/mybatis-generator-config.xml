@@ -10,7 +10,7 @@
 
     <!--数据库驱动包路径 -->
     <classPathEntry
-            location="/Users/zhoukang/.m2/repository/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar"/>
+            location="/Users/zhoukang/.m2/repository/mysql/mysql-connector-java/5.1.36/mysql-connector-java-5.1.36.jar"/>
 
     <context id="MybatisGenerator" targetRuntime="MyBatis3">
         <!-- 为MySQL关键字添加分隔符 -->
