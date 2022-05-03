@@ -1,18 +1,42 @@
 package cn.jokang.demo.mapstruct;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author zhoukang
  * @date 2020/10/20
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Car {
+    public Car(String make, int numberOfSeats, CarType type) {
+        this.make = make;
+        this.numberOfSeats = numberOfSeats;
+        this.type = type;
+    }
+
     private String make;
     private int numberOfSeats;
     private CarType type;
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public CarType getType() {
+        return type;
+    }
+
+    public void setType(CarType type) {
+        this.type = type;
+    }
 }
