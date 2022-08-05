@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class NumberTests {
     private static final Logger logger = LoggerFactory.getLogger(NumberTests.class);
@@ -38,5 +40,16 @@ public class NumberTests {
     public void testAsList() {
         List<String> s = Arrays.asList("1,2".split(","));
         System.out.println(s);
+    }
+
+    @Test
+    public void random() {
+        long start = System.currentTimeMillis();
+        for (int i = 0; i<1000; i++) {
+            Random r = new Random();
+            List<Integer> collect = r.ints(200, 0, 200000).boxed().collect(Collectors.toList());
+        }
+        long end = System.currentTimeMillis();
+        System.out.println("time used: " + (end - start));
     }
 }
