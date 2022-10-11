@@ -13,7 +13,17 @@ import java.util.Map;
  * @author zhoukang04
  * @date 2021/7/27
  */
-public class EvaluationTest {
+public class AviatorEvaluationTest {
+    @Test
+    public void testMissingVariable() {
+        // 出现未传入的变量的时候,不会抛错
+        Expression expression = AviatorEvaluator.getInstance().compile("val > 'aaa'");
+        Map<String, Object> param = Maps.newHashMap();
+        // param.put("val", "aaa");
+        Object result = expression.execute(param);
+        System.out.println(result);
+    }
+
     @Test
     public void testBooleanEquals() {
         Expression expression = AviatorEvaluator.getInstance().compile("val == true");
@@ -50,7 +60,7 @@ public class EvaluationTest {
     }
 
     @Test
-    public void testInSet() {
+    public void testInclude() {
         Expression expression = AviatorEvaluator.getInstance().compile("include(spu.rawCoreWords, '牙刷') ? '婴儿牙刷' : (include(spu.rawCoreWords, '牙膏') ?'婴儿牙膏':'')");
         Map<String, Object> param = Maps.newHashMap();
         param.put("spu", ImmutableMap.of("rawCoreWords", Sets.newHashSet("牙膏")));
