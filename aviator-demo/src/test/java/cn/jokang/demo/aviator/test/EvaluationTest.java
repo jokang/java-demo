@@ -8,7 +8,6 @@ import com.googlecode.aviator.Expression;
 import org.junit.Test;
 
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author zhoukang04
@@ -41,6 +40,13 @@ public class EvaluationTest {
         param.put("val", null);
         Object result2 = expression.execute(param);
         System.out.println(result2);
+
+        // new出来的String对象和String常量能够相等,是Aviator的String做了兼容
+        param = Maps.newHashMap();
+        param.put("val", new String("aaa"));
+        result = expression.execute(param);
+        // true
+        System.out.println(result);
     }
 
     @Test

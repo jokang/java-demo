@@ -2,12 +2,15 @@ package cn.jokang.demos.guava;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -60,6 +63,32 @@ public class SplitterTest {
 
     @Test
     public void spilitMap() {
+        String tmp ="0_30001:1.8,0_30005:2,1_30001:1.2,1_30002:2,1_30003:1.2,1_30004:1.5,1_30006:2,2_30002:1.5,2_30003:2,2_30004:2,2_30007:2";
+        Map<String, Double> weightMap = Maps.newHashMap();
+        Splitter.on(",").withKeyValueSeparator(":").split(tmp).forEach((k, v) -> {
+            weightMap.put(k, Double.valueOf(v));
+        });
 //        Splitter.on(":").withKeyValueSeparator(":").split()
+    }
+    
+    @Test
+    public void op() {
+        // 注意三元表达式的自动拆装箱问题
+//        Pair<Long, Long> value = Pair.of(1L, 1L);
+        Pair<Long, Long> value = null;
+        Long aorId = value == null ? -1L : value.getLeft();
+        System.out.println(aorId);
+    }
+
+    @Test
+    public void testStringEquals() {
+        String s1 = "HELLO";
+        String s2 = "HELLO";
+        String s3 =  new String("HELLO");
+
+        System.out.println(s1 == s2); // true
+        System.out.println(s1 == s3); // false
+        System.out.println(s1.equals(s2)); // true
+        System.out.println(s1.equals(s3)); // true
     }
 }
