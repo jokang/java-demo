@@ -66,6 +66,13 @@ public class AviatorEvaluationTest {
         param.put("spu", ImmutableMap.of("rawCoreWords", Sets.newHashSet("牙膏")));
         Object result = expression.execute(param);
         System.out.println(result);
+
+        try {
+            Object tmpReulst = AviatorEvaluator.execute("include(ids, 111)");
+            System.out.println(tmpReulst);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Test
