@@ -1,6 +1,6 @@
-package cn.jokang.demos.aviator;
+package cn.jokang.demos.aviator.qb;
 
-import cn.jokang.demos.aviator.obj.EqQuery;
+import cn.jokang.demos.aviator.qb.obj.EqQuery;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.googlecode.aviator.AviatorEvaluator;
@@ -21,7 +21,7 @@ import java.util.Map;
  * @author zhoukang
  * @date 2019-08-11
  */
-public class AddFunctionExample {
+public class CustomFunctionExample {
     static class ParameterContainsFunction extends AbstractFunction {
 
         @Override
@@ -31,6 +31,7 @@ public class AddFunctionExample {
         }
 
 
+        @Override
         public String getName() {
             return "param_contains";
         }
@@ -47,6 +48,7 @@ public class AddFunctionExample {
         }
 
 
+        @Override
         public String getName() {
             return "show_param";
         }
@@ -55,6 +57,7 @@ public class AddFunctionExample {
 
     public static class OverloadEq extends AbstractFunction {
 
+        @Override
         public String getName() {
             return "==";
         }

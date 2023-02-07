@@ -7,6 +7,7 @@ import com.googlecode.aviator.AviatorEvaluator;
 import com.googlecode.aviator.Expression;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -36,6 +37,16 @@ public class AviatorEvaluationTest {
         param.put("val", null);
         Object result2 = expression.execute(param);
         System.out.println(result2);
+    }
+
+    @Test
+    public void testTernaryOperator() {
+        // 改变输入的参数
+        final int num = Integer.parseInt("1");
+        Map<String, Object> env = new HashMap<String, Object>();
+        env.put("a", num);
+        String result = (String) AviatorEvaluator.execute("a>0? 'yes':'no'", env);
+        System.out.println(result);
     }
 
     @Test

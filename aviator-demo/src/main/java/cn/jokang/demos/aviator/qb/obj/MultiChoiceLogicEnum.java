@@ -1,4 +1,4 @@
-package cn.jokang.demos.aviator.obj;
+package cn.jokang.demos.aviator.qb.obj;
 
 /**
  * @author zhoukang

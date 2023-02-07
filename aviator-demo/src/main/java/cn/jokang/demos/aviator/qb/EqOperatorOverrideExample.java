@@ -1,6 +1,6 @@
-package cn.jokang.demos.aviator;
+package cn.jokang.demos.aviator.qb;
 
-import cn.jokang.demos.aviator.obj.EqQuery;
+import cn.jokang.demos.aviator.qb.obj.EqQuery;
 import com.google.common.collect.Maps;
 import com.googlecode.aviator.AviatorEvaluator;
 import com.googlecode.aviator.lexer.token.OperatorType;
@@ -15,7 +15,7 @@ import java.util.Map;
  * @author zhoukang
  * @date 2019-08-11
  */
-public class EqQueryDemo {
+public class EqOperatorOverrideExample {
     public static class OverloadEq extends AbstractFunction {
 
         @Override

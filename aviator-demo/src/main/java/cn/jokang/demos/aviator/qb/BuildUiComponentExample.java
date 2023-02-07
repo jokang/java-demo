@@ -1,8 +1,8 @@
-package cn.jokang.demos.aviator;
+package cn.jokang.demos.aviator.qb;
 
-import cn.jokang.demos.aviator.obj.MultiChoiceLogicEnum;
-import cn.jokang.demos.aviator.obj.MultiChoiceUiItem;
-import cn.jokang.demos.aviator.obj.UiItem;
+import cn.jokang.demos.aviator.qb.obj.MultiChoiceLogicEnum;
+import cn.jokang.demos.aviator.qb.obj.MultiChoiceUiItem;
+import cn.jokang.demos.aviator.qb.obj.UiItem;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.googlecode.aviator.AviatorEvaluator;

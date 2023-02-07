@@ -1,4 +1,4 @@
-package cn.jokang.demos.aviator.obj;
+package cn.jokang.demos.aviator.qb.obj;
 
 import com.googlecode.aviator.runtime.type.AviatorObject;
 import com.googlecode.aviator.runtime.type.AviatorType;
@@ -11,11 +11,11 @@ import java.util.Map;
  * @author zhoukang
  * @date 2019-08-11
  */
-public class OrQuery extends AviatorObject {
+public class AndQuery extends AviatorObject {
     private EqQuery arg1;
     private EqQuery arg2;
 
-    public OrQuery(EqQuery arg1, EqQuery arg2) {
+    public AndQuery(EqQuery arg1, EqQuery arg2) {
         super();
         this.arg1 = arg1;
         this.arg2 = arg2;
@@ -39,7 +39,7 @@ public class OrQuery extends AviatorObject {
 
     @Override
     public String toString() {
-        return "OrQuery{" +
+        return "AndQuery{" +
             "arg1='" + arg1 + '\'' +
             ", arg2='" + arg2 + '\'' +
             '}';

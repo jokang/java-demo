@@ -1,8 +1,8 @@
-package cn.jokang.demos.aviator;
+package cn.jokang.demos.aviator.qb;
 
-import cn.jokang.demos.aviator.obj.AndQuery;
-import cn.jokang.demos.aviator.obj.EqQuery;
-import cn.jokang.demos.aviator.obj.OrQuery;
+import cn.jokang.demos.aviator.qb.obj.AndQuery;
+import cn.jokang.demos.aviator.qb.obj.EqQuery;
+import cn.jokang.demos.aviator.qb.obj.OrQuery;
 import com.google.common.collect.Maps;
 import com.googlecode.aviator.AviatorEvaluator;
 import com.googlecode.aviator.AviatorEvaluatorInstance;

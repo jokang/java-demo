@@ -1,4 +1,4 @@
-package cn.jokang.demos.aviator.obj;
+package cn.jokang.demos.aviator.qb.obj;
 
 import com.googlecode.aviator.runtime.type.AviatorObject;
 import com.googlecode.aviator.runtime.type.AviatorType;
