@@ -23,6 +23,7 @@
         <module>spring3-demos</module>
         <module>thrift-demo</module>
         <module>springboot-web</module>
+        <module>dbcp-druid</module>
     </modules>
 
     <dependencies>

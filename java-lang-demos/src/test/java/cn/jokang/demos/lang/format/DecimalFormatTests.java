@@ -14,13 +14,18 @@ import java.util.Map;
 @Slf4j
 public class DecimalFormatTests {
 
-    // 最多保留两位小数
-    // DecimalFormat 带百分号的,不用另外乘以100
+
     @Test
     public void testDecimalFormat() {
+        // 最多保留两位小数
+        // DecimalFormat 带百分号的,不用另外乘以100
         DecimalFormat decimalFormat = new DecimalFormat("#.##%");
         System.out.println(decimalFormat.format(0.13539408789620833D));
         System.out.println(decimalFormat.format(0D));
+
+        System.out.println(String.format("%.5f", 0.1234567D));
+        System.out.println(String.format("%.5f", 0.1200000D));
+        System.out.println(String.format("%.5f", 0.0012000D));
     }
 
 
