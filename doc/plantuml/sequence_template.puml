@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/en/sequence-diagram
+
+'给消息编号
+autonumber
+
+title 顺序图模板
+
+'声明参与者，并用box包起来
+actor 用户 as User order 1
+box "Internal Service" #LightBlue
+    participant 服务 as Service order 2
+    database 数据库 as Database order 3
+end box
+
+User -> Service: 访问服务
+Service -> Service: 做一些操作
+'演示双向箭头
+Service <-> Database: query
+'给上面的消息加个注释
+note left
+给消息加个注释
+end note
+
+'演示分隔符
+== 分隔符 ==
+
+'演示消息分组
+'还可以使用 opt loop par break critical
+alt Success
+    User -> Service
+else Timeout
+    User -> Service
+else Exception
+    User -> Service
+end
+
+group 消息分组 [第二标题]
+    User -> Service
+end
+
+'演示生命线
+User -> Service
+activate Service
+    Service -> User
+deactivate Service
+
+'强调新参与者的创建
+User -> Service: query
+create QueryObject
+Service -> QueryObject: 强调是在创建新对象
+@enduml
