@@ -4,7 +4,10 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.googlecode.aviator.AviatorEvaluator;
+import com.googlecode.aviator.AviatorEvaluatorInstance;
 import com.googlecode.aviator.Expression;
+import com.googlecode.aviator.Options;
+import com.googlecode.aviator.lexer.token.OperatorType;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -103,5 +106,26 @@ public class AviatorEvaluationTest {
         param.put("data", 1);
         Object result = expression.execute(param);
         System.out.println(result);
+    }
+
+    @Test
+    public void testDiv() {
+        AviatorEvaluatorInstance aviatorEvaluatorInstance = AviatorEvaluator.newInstance();
+        // ALWAYS_PARSE_INTEGRAL_NUMBER_INTO_DECIMAL 只是字面值1会解析成decimal
+        aviatorEvaluatorInstance.setOption(Options.ALWAYS_PARSE_INTEGRAL_NUMBER_INTO_DECIMAL, true);
+//        aviatorEvaluatorInstance.addOpFunction(OperatorType.DIV, );
+        Expression expression = aviatorEvaluatorInstance
+                .compile("(a+b+1)/c");
+        Map<String, Object> param = Maps.newHashMap();
+        param.put("a", 1);
+        param.put("b", 2);
+        param.put("c", 9);
+        Object result = expression.execute(param);
+        System.out.println(result);
+
+        Expression expression2 = aviatorEvaluatorInstance
+                .compile("a/c");
+        Object result2 = expression2.execute(param);
+        System.out.println(result2);
     }
 }
