@@ -303,4 +303,13 @@ public class DateTimeTests {
         System.out.println(zdt);
         System.out.println(Date.from(zdt.toInstant()));
     }
+
+    @Test
+    public void simple(){
+        LocalDate start = LocalDate.parse("20230501", DateTimeFormatter.ofPattern("yyyyMMdd"));
+        System.out.println(start.format(DateTimeFormatter.ofPattern("M月d号")));
+
+        LocalDateTime end = LocalDateTime.parse("2023050102", DateTimeFormatter.ofPattern("yyyyMMddHH"));
+        System.out.println(end.format(DateTimeFormatter.ofPattern("M月d号HH:mm:ss")));
+    }
 }

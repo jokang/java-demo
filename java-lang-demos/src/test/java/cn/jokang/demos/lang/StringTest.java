@@ -1,7 +1,15 @@
 package cn.jokang.demos.lang;
 
+import com.google.common.collect.Comparators;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 /**
  * @author zhoukang
@@ -51,5 +59,18 @@ public class StringTest {
     public void testStringEquals() {
         String a = new String("");
         System.out.println(a == "");
+    }
+
+    @Test(expected = StringIndexOutOfBoundsException.class)
+    public void testSubStringMoreThanLength() {
+        String s = "some";
+        System.out.println(s.substring(0,100));
+    }
+
+    @Test
+    public void testSubStringMoreThanLengthWithUtil() {
+        String s = "some";
+        String sub = StringUtils.substring(s, 0, 100);
+        Assert.assertEquals(s, sub);
     }
 }
