@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
@@ -311,5 +312,23 @@ public class DateTimeTests {
 
         LocalDateTime end = LocalDateTime.parse("2023050102", DateTimeFormatter.ofPattern("yyyyMMddHH"));
         System.out.println(end.format(DateTimeFormatter.ofPattern("M月d号HH:mm:ss")));
+
+        // 需要指定年月日的宽度,才能同时兼容两种格式. 或者小时前面加空格
+        // https://stackoverflow.com/a/49361348
+        DateTimeFormatter DATE_FORMAT =
+            new DateTimeFormatterBuilder().appendValue(ChronoField.YEAR, 4)
+                .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+                .appendValue(ChronoField.DAY_OF_MONTH, 2)
+                .optionalStart()
+                .appendOptional(new DateTimeFormatterBuilder()
+                    .appendPattern("HH")
+                    .toFormatter())
+                .optionalEnd()
+                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+                .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+                .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+                .toFormatter();
+        System.out.println(LocalDateTime.parse("20230501", DATE_FORMAT));
+        System.out.println(LocalDateTime.parse("2023050111", DATE_FORMAT));
     }
 }
