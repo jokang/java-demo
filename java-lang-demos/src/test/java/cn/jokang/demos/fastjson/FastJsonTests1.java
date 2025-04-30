@@ -33,6 +33,24 @@ public class FastJsonTests1 {
     }
 
     @Test
+    public void testContainsAndNull() {
+        String jsonStr1 = "{\n" +
+            "    \"data\": {\n" +
+            "        \"sentences\": null\n" +
+            "    }\n" +
+            "}";
+        JSONObject jo1 = JSON.parseObject(jsonStr1);
+        Assert.assertTrue(jo1.getJSONObject("data").containsKey("sentences"));
+        Assert.assertNull(jo1.getJSONObject("data").getJSONArray("sentences"));
+
+        String jsonStr2 = "{\"data\":{}}";
+        JSONObject jo2 = JSON.parseObject(jsonStr2);
+        Assert.assertFalse(jo2.getJSONObject("data").containsKey("sentences"));
+        // 不会抛NPE
+        Assert.assertNull(jo2.getJSONObject("data").getJSONArray("sentences"));
+    }
+
+    @Test
     public void testJsonArray() {
         JSONArray jsonArray = JSON.parseArray("");
         System.out.println(jsonArray);

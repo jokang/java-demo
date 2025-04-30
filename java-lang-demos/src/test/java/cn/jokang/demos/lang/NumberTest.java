@@ -61,4 +61,16 @@ public class NumberTest {
         System.out.println(Integer.parseInt("031")); // 其实还是31
 
     }
+
+    @Test
+    public void parseLong() {
+        System.out.println(Long.parseLong("012"));
+    }
+
+    @Test
+    public void testRoundDouble() {
+//        double d = 0.3;
+        Double d = Double.valueOf("0.3");
+        System.out.println(d);
+    }
 }

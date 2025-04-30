@@ -24,6 +24,7 @@
         <module>thrift-demo</module>
         <module>springboot-web</module>
         <module>dbcp-druid</module>
+        <module>poi-demo</module>
     </modules>
 
     <dependencies>

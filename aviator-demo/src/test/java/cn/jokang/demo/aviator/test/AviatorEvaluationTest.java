@@ -8,6 +8,7 @@ import com.googlecode.aviator.AviatorEvaluatorInstance;
 import com.googlecode.aviator.Expression;
 import com.googlecode.aviator.Options;
 import com.googlecode.aviator.lexer.token.OperatorType;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -18,6 +19,46 @@ import java.util.Map;
  * @date 2021/7/27
  */
 public class AviatorEvaluationTest {
+    @Test
+    public void showOptions() {
+        System.out.println(AviatorEvaluator.getOption(Options.ENABLE_PROPERTY_SYNTAX_SUGAR).toString());;
+    }
+
+    @Test
+    public void testStringConcat() {
+        // 出现未传入的变量的时候,不会抛错
+        Expression expression = AviatorEvaluator.getInstance().compile("\"带双引号的string\"");
+        Assert.assertEquals("带双引号的string", expression.execute());
+
+        expression = AviatorEvaluator.getInstance().compile("\"字符串加变量\" + v1");
+        Map<String, Object> ctx = Maps.newHashMap();
+        ctx.put("v1", "variable");
+        Assert.assertEquals("字符串加变量variable", expression.execute(ctx));
+
+        expression = AviatorEvaluator.getInstance().compile("\"字符串加变量\" + nullVariable");
+        Map<String, Object> ctx2 = Maps.newHashMap();
+        ctx2.put("nullVariable", null);
+        Assert.assertEquals("字符串加变量null", expression.execute(ctx2));
+
+        expression = AviatorEvaluator.getInstance().compile("\"字符串加变量\" + (nullVariable==nil?\"\":nullVariable)");
+        Map<String, Object> ctx3 = Maps.newHashMap();
+        ctx2.put("nullVariable", null);
+        Assert.assertEquals("字符串加变量", expression.execute(ctx3));
+
+
+        expression = AviatorEvaluator.getInstance().compile("\"费用\"+\",paymentId:\"+paymentId+\",partnerName:\"+(partnerName==nil?\"\":partnerName)");
+        Map<String, Object> ctx4 = Maps.newHashMap();
+        ctx4.put("paymentId", "1111");
+        ctx4.put("partnerName", null);
+//        Assert.assertEquals("字符串加变量", expression.execute(ctx4));
+//        System.out.println(expression.execute(ctx4));
+        expression = AviatorEvaluator.getInstance().compile("!include(seq.list('ZT_SETTLE','ZT_SETTLE_COMBINE','ZT_SETTLE_CAPITAL'),payChannel)");
+        Map<String, Object> ctx5 = Maps.newHashMap();
+        ctx5.put("payChannel", null);
+        System.out.println(expression.execute(ctx5));
+
+    }
+
     @Test
     public void testMissingVariable() {
         // 出现未传入的变量的时候,不会抛错

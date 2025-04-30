@@ -70,7 +70,26 @@ public class DecimalFormatTests {
     public void testReplace() {
         String s = "\\u003";
         System.out.println(s.replace("\\u003", ">"));
+    }
 
+    @Test
+    public void testDivideScale() {
+        BigDecimal ratio = BigDecimal.ZERO;
+        ratio = new BigDecimal(14010L).divide(new BigDecimal(256300L), 2, BigDecimal.ROUND_DOWN);
+        System.out.println(ratio);
+        System.out.println(new BigDecimal(97648L).multiply(ratio).longValue());;
+    }
 
+    @Test
+    public void testTmp() {
+        long total=113400L+481525L;
+        int num=113400;
+        long amount = 596600L;
+        long  rebalanceAmount = (long)(num * amount * 1.0 / total);
+        System.out.println(rebalanceAmount);
+        System.out.println(amount-rebalanceAmount);
+
+        System.out.println(rebalanceAmount/100.0);
+        System.out.println((amount-rebalanceAmount)/100.0);
     }
 }

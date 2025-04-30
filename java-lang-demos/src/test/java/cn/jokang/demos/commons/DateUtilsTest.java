@@ -7,6 +7,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.junit.Test;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -38,5 +39,35 @@ public class DateUtilsTest {
         List<String> ll = Lists.newArrayList("a", "b");
         String md5PrefixString = Joiner.on("','").skipNulls().join(ll);
         System.out.println(md5PrefixString);
+    }
+
+    @Test
+    public void test2() {
+        System.out.println(getGapBetweenDays("20240101", "20240102"));
+    }
+
+    private static int getGapBetweenDays(String startDateStr, String endDateStr) {
+        java.util.Date endDate = string2DateDay(endDateStr);
+        java.util.Date startDate = string2DateDay(startDateStr);
+        return (int)((endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000)); // 相差天数
+    }
+
+    private static Date string2DateDay(String str) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+        str = null2Trim(str);
+        try {
+            return formatter.parse(str);
+        } catch (ParseException e) {
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 0);
+            return cal.getTime();
+        }
+    }
+
+    public static final String null2Trim(String str) {
+        return str == null ? "" : str.trim();
     }
 }

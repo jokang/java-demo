@@ -51,4 +51,9 @@ public class MessageFormatTest {
     public void formatSkip() {
         System.out.println(MessageFormat.format("{1}", null, 1));
     }
+
+    @Test
+    public void testDollar() {
+        System.out.println(MessageFormat.format("${0}折扣率", 1));
+    }
 }

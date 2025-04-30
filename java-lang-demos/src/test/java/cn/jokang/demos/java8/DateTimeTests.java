@@ -331,4 +331,10 @@ public class DateTimeTests {
         System.out.println(LocalDateTime.parse("20230501", DATE_FORMAT));
         System.out.println(LocalDateTime.parse("2023050111", DATE_FORMAT));
     }
+
+    @Test
+    public void testDateWeekRange() {
+        LocalDateTime dt = LocalDateTime.of(2024, 1, 1, 0, 0);
+        System.out.println(dt);
+    }
 }
